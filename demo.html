@@ -1,0 +1,66 @@
+<html>
+    <head></head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .canvas{
+            width: 300px;
+            height: 300px;
+            margin-top: 20px;
+            background: #ddd;
+        }
+    </style>
+    <body>
+        <h1>Vue Basics</h1>
+        
+        <div id="app">
+            <h2>{{ title }}</h2>
+            <ul>
+                <li v-for="item in items">{{item}}</li>
+            </ul>
+            <ul>
+                <div v-for="p in people">
+                    <p>Name: {{p.name}}, Age: {{p.age}}</p>
+                </div>
+            </ul>
+            <p v-if="showNome">Name</p>
+            <p v-if="showAge">5</p>
+            <p v-if="showWage">I earn {{wage}}</p>
+            <button @click="toggleName">Show Nome {{showNome}}</button><br>
+            <button @click="toggleWage">Show Wage {{showWage}}</button><br>
+
+            <!-- default methods -->
+            <button v-on:click="wage++">increase</button><br>
+            <button v-on:click="wage--">decrease</button><br>
+            <!-- js methods -->
+            <button v-on:click="changeWage(10)">increase 10</button><br>
+            <button v-on:click="changeWage(-5)">decrease 5</button><br>
+            <!-- double click -->
+            <button v-on:dblclick="changeWage(10)">increase 10 double click</button><br>
+            <button v-on:dblclick="changeWage(-5)">decrease 5 double click</button><br>
+            <!-- mouse click events -->
+            <button @click="logMessage">click me</button>
+            <button @click.alt="logMessage">press alt and click me</button>
+            <button @click.shift="logMessage">press shift and click me</button>
+            <a href="http://www.google.com" @click.prevent="logMessage">Google</a>
+
+            <!-- mouse moving events -->
+            <button @click="logEvent">Log Event Info</button>
+            <div class="canvas" @mousemove="logCoords">{{coords.x}}, {{coords.y}}</div>
+
+            <p>My name is {{name}}</p>
+            <!-- key up -->
+            <input type="text" @keyup="updateName"><br>
+            <!-- key press -->
+            <input type="text" @keypress="updateName"><br>
+            <!-- two way key binding -->
+            <input type="text" v-model="name"><br>
+
+            
+            
+            
+            <a v-bind:href="url">Youtube</a>
+            <div v-bind:class="classes">Classes</div>
+        </div>
+        <script src="demo.js"></script>
+    </body>
+</html>
